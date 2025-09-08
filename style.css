@@ -1,3 +1,10 @@
+:root {
+    --console-color: lightgray;
+    --screen-color: rgb(145, 142, 142);
+    --buttons-color: rgb(0, 140, 255);
+    --press-buttons-color: rgb(0, 130, 255);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #000;
@@ -8,8 +15,6 @@ body {
     justify-content: center;
 }
 
-
-
 #console {
     display: flex;
     flex-direction: column;
@@ -17,14 +22,25 @@ body {
     border-radius: 20px;
 }
 
-#screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#console-top {
+    padding: 60px;
     border-radius: 20px;
-    background-color: #bbb;
-    border: 50px solid lightgray;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(238, 237, 237, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--console-color);
+    background-image: url("img/bg.png"), url("img/bg.png");
+    background-position: left center, right center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 60px auto;
+}
+
+#console-bottom {
+    background-color: var(--console-color);
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(238, 237, 237, 0.1);
 }
 
 hr.separator {
@@ -36,64 +52,195 @@ hr.separator {
     margin: auto;
 }
 
-#buttons {
-    display: inline-flex;
-    justify-content: center;
-    border-radius: 20px;
-    padding: 50px 10px;
-    background-color: lightgray;
-}
-
-.grid {
-    width: 200px;
-    height: 400px;
-    border-top: #000 2px solid;
-    border-right: #000 2px solid;
+#screen {
     display: flex;
-    flex-wrap: wrap;
-}
-
-.grid div {
-    width: 20px;
-    height: 20px;
-}
-
-.mini-grid {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px 10px;
-}
-
-.mini-grid div {
-    width: 20px;
-    height: 20px;
-}
-
-.tetromino {
-    background-color: blue;
-}
-
-#start-button {
-    width: 100px;
-    height: 50px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 5px 10px;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--screen-color);
+    border: 10px inset var(--console-color);
 }
 
 header {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 5px;
+    width: 100%;
+}
+
+h3 {
+    margin: 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 main {
     display: flex;
     justify-content: center;
     align-items: top;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3em;
+}
+
+#status {
+    text-align: center;
+    text-transform: uppercase;
+    white-space: pre-line;
+    animation: blink 3s ease-in-out 1s infinite;
+}
+
+/* Plansza główna */
+#grid {
+    width: 200px;
+    height: 400px;
+    border-top: #000 2px solid;
+    border-right: #000 2px solid;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+}
+
+/* Komórka klocka */
+.tetromino {
+    border: 1px solid var(--screen-color);
+    box-sizing: border-box;
+}
+
+/* Komórki już "położone" */
+.tetromino.placed {
+    background-color: #444;
+}
+
+/* Mini-grid (następna figura) */
+#mini-grid {
+    width: 80px;
+    height: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 20px);
+    grid-template-rows: repeat(4, 20px);
+    gap: 0;
+    margin: 20px 10px;
+}
+
+/* Komórki mini-gridu */
+#mini-grid .tetromino {
+    border: 1px solid var(--screen-color);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Pozycjonowanie przycisków */
+#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "leftArrow rightArrow rotate"
+        "bottomArrow bottomArrow rotate"
+        "controls controls controls";
+    gap: 0;
+}
+
+.leftArrow {
+    grid-area: leftArrow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightArrow {
+    grid-area: rightArrow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotate {
+    grid-area: rotate;
+    display: flex;
+    justify-content: end;
+    align-items: top;
+    padding-right: 0.5em;
+}
+
+.bottomArrow {
+    grid-area: bottomArrow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls {
+    grid-area: controls;
+    margin-top: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+#left-button,
+#right-button,
+#down-button {
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+}
+
+#rotate-button {
+    width: 100px;
+    height: 100px;
+    font-size: 24px;
+}
+
+#start-button,
+#sound-button,
+#pause-button {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+}
+
+#buttons button {
+    border-radius: 50%;
+    border: 2px groove gray;
+    background-color: var(--buttons-color);
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#buttons button:active {
+    background-color: var(--press-buttons-color);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px auto 0;
+    font-size: 160px;
+    cursor: default;
+}
+
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .1;
+    }
 }
