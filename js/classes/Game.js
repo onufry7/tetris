@@ -2,7 +2,9 @@ import { Board } from './Board.js';
 import { Score } from './Score.js';
 import { Render } from './Render.js';
 import { Status } from './Status.js';
+import { SoundManager } from './SoundManager.js';
 import { TetrominoFactory } from "./TetrominoFactory.js";
+import { InputManager } from './InputManager.js';
 
 export class Game
 {
@@ -10,28 +12,13 @@ export class Game
     #dropInterval;
     #timerId = null;
     #lineClear;
-    #keyActions;
-    #codeMap = {
-        "Enter": "start",
-        "Space": "pause",
-        "ArrowLeft": "left",
-        "ArrowRight": "right",
-        "ArrowDown": "down",
-        "ArrowUp": "up",
-        "KeyS": "sound",
-        "start-button": "start",
-        "pause-button": "pause",
-        "left-button": "left",
-        "right-button": "right",
-        "down-button": "down",
-        "rotate-button": "up",
-        "sound-button": "sound"
-    };
+    #keyActions = [];
 
     board;
     score;
     renderer;
     status;
+    soundManager;
     current;
     next;
     paused = false;
@@ -41,10 +28,12 @@ export class Game
 
     constructor(config)
     {
+        this.inputManager = new InputManager(this)
         this.board = new Board(config.board);
         this.score = new Score(config.score);
         this.renderer = new Render(config.render);
         this.status = new Status(config.status);
+        this.soundManager = new SoundManager(config.sound);
 
         this.#tetrominoFactory = TetrominoFactory;
         this.#dropInterval = config.speed.initialDropInterval;
@@ -52,11 +41,11 @@ export class Game
 
         this.#keyActions = {
             start: () => this.start(),
-            sound: () => console.log('SOUND THE POLICE!'),
+            sound: () => this.soundManager.toggleMute(),
             left: () => this.#tryMove(-1, 0),
             right: () => this.#tryMove(1, 0),
             down: () => this.tick(),
-            up: () => this.#tryMove(0, 0, true),
+            rotate: () => this.#tryMove(0, 0, true),
             pause: () => this.togglePause()
         };
     }
@@ -104,6 +93,7 @@ export class Game
 
     #endGame()
     {
+        //this.soundManager.play('gameover');
         this.gameOver = true;
         this.#clearTimer();
         this.status.showGameOver();
@@ -125,24 +115,25 @@ export class Game
         this.gameOver = false;
     }
 
-    start()
+    async start()
     {
+        //this.soundManager.play('start');
         this.started = true;
         this.#clearTimer();
         this.#resetGameState();
-        this.#scheduleTick();
         this.render();
+        this.#scheduleTick();
     }
 
-    handleKey(code)
+    handleKey(action)
     {
-        const actionName = this.#codeMap[code];
-        if (!actionName) return;
+        //this.soundManager.playForKey(action);
+        if (!action) return;
 
-        if ((actionName !== "start" && actionName !== "sound" && actionName !== "pause") &&
+        if ((action !== "start" && action !== "sound" && action !== "pause") &&
             (this.gameOver || !this.started || this.paused)) return;
 
-        this.#keyActions[actionName]();
+        this.#keyActions[action]();
         this.render();
     }
 
