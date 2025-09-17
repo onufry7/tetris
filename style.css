@@ -8,6 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #000;
+    font-size: 16px;
     margin: 0;
     padding: 40px 20px;
     display: flex;
@@ -68,12 +69,20 @@ header {
 
 h3 {
     margin: 0;
+    padding: 0 10px;
     font-size: 16px;
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     align-items: center;
+    gap: 2em;
+}
+
+h3>span {
+    flex: 1 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 main {
@@ -87,14 +96,38 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 3em;
+    gap: 1em;
 }
 
 #status {
+    flex: 1 1 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     text-transform: uppercase;
     white-space: pre-line;
     animation: blink 3s ease-in-out 1s infinite;
+}
+
+#sound {
+    flex: 1 1 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lines {
+    flex: 1 1 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: smaller;
 }
 
 /* Plansza główna */

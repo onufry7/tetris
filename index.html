@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Twoje Imię i Nazwisko">
+    <meta name="keywords" content="tetris, gra, JavaScript, HTML, CSS, klocki, plansza, dźwięki">
+    <meta name="description" content="Prosta gra Tetris w JavaScript.">
     <link rel="stylesheet" href="style.css">
     <script TYPE="module" src="js/Main.js" charset="utf-8"></script>
     <title>Tetris</title>
@@ -27,9 +30,8 @@
                     <div class="side-panel">
                         <div id="mini-grid"></div>
                         <div id="status"></div>
-                        <div id="sound">
-                            &#9835;
-                        </div>
+                        <div class="lines"> Lines: <span id="lines">0</span> </div>
+                        <div id="sound"></div>
                     </div>
                 </main>
             </div>
@@ -40,24 +42,24 @@
         <div id="console-bottom">
             <div id="buttons">
                 <div class="leftArrow">
-                    <button id="left-button">&#11164;</button>
+                    <button id="left-button">⮜</button>
                 </div>
                 <div class="rightArrow">
-                    <button id="right-button">&#11166;</button>
+                    <button id="right-button">⮞</button>
                 </div>
                 <div class="rotate">
-                    <button id="rotate-button">&#11118;</button>
+                    <button id="rotate-button">⭮</button>
                 </div>
                 <div class="bottomArrow">
-                    <button id="down-button">&#11167;</button>
+                    <button id="down-button">⮟</button>
                 </div>
                 <div class="controls">
-                    <button id="start-button">&#9211;</button>
-                    <button id="sound-button">&#9835;</button>
+                    <button id="start-button">⏻</button>
+                    <button id="sound-button">♫</button>
                     <button id="pause-button">⏸</button>
                 </div>
             </div>
-            <div class="logo">&#129302;</div>
+            <div class="logo">🤖</div>
         </div>
 
     </div>

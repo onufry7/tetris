@@ -22,6 +22,6 @@ export class Status
 
     showPaused()
     {
-        this.#setText("&#127861;<br>PAUSE");
+        this.#setText("🍵<br>PAUSE");
     }
 }

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () =>
         grid: document.getElementById("grid"),
         miniGrid: document.getElementById("mini-grid"),
         score: document.getElementById("score"),
+        lines: document.getElementById("lines"),
         status: document.getElementById("status"),
         sound: document.getElementById("sound")
     };

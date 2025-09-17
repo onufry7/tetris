@@ -1,12 +1,16 @@
 export class Config
 {
-    constructor({ grid, miniGrid, score, status, sound })
+    constructor({ grid, miniGrid, score, lines, status, sound })
     {
         // Rozmiar planszy
         this.board = { width: 10, height: 20 }
 
         // Punktacja i prędkość spadania
-        this.scoring = { lineClear: 10 }
+        this.scoring = {
+            scoreIndicator: score,
+            linesIndicator: lines,
+            lineClear: 10
+        }
 
         this.speed = { initialDropInterval: 500 }
 
@@ -19,17 +23,24 @@ export class Config
             miniGridElement: miniGrid
         }
 
-        this.score = {
-            element: score
-        }
-
         this.status = {
             element: status
         }
 
         this.sound = {
             element: sound,
-
-        }
+            sounds: {
+                left: "./sounds/move.mp3",
+                right: "./sounds/move.mp3",
+                down: "./sounds/move.mp3",
+                rotate: "./sounds/rotate.mp3",
+                start: "./sounds/start.mp3",
+                sound: "./sounds/move.mp3",
+                pause: "./sounds/move.mp3",
+                drop: "./sounds/drop.mp3",
+                clear: "./sounds/clear.mp3",
+                gameover: "./sounds/gameover.mp3"
+            }
+        };
     }
 }

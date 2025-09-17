@@ -11,11 +11,11 @@ export class Game
     #tetrominoFactory;
     #dropInterval;
     #timerId = null;
-    #lineClear;
     #keyActions = [];
 
     board;
     score;
+    lineClear;
     renderer;
     status;
     soundManager;
@@ -30,14 +30,13 @@ export class Game
     {
         this.inputManager = new InputManager(this)
         this.board = new Board(config.board);
-        this.score = new Score(config.score);
+        this.score = new Score(config.scoring);
         this.renderer = new Render(config.render);
         this.status = new Status(config.status);
         this.soundManager = new SoundManager(config.sound);
 
         this.#tetrominoFactory = TetrominoFactory;
         this.#dropInterval = config.speed.initialDropInterval;
-        this.#lineClear = config.scoring.lineClear;
 
         this.#keyActions = {
             start: () => this.start(),
@@ -93,7 +92,7 @@ export class Game
 
     #endGame()
     {
-        //this.soundManager.play('gameover');
+        this.soundManager.play('gameover');
         this.gameOver = true;
         this.#clearTimer();
         this.status.showGameOver();
@@ -117,7 +116,7 @@ export class Game
 
     async start()
     {
-        //this.soundManager.play('start');
+        this.soundManager.play('start');
         this.started = true;
         this.#clearTimer();
         this.#resetGameState();
@@ -127,7 +126,7 @@ export class Game
 
     handleKey(action)
     {
-        //this.soundManager.playForKey(action);
+        this.soundManager.play(action);
         if (!action) return;
 
         if ((action !== "start" && action !== "sound" && action !== "pause") &&
@@ -158,8 +157,14 @@ export class Game
         const moved = this.#tryMove(0, 1);
         if (!moved) {
             this.board.place(this.current);
+            this.soundManager.play('drop');
             const cleared = this.board.clearLines();
-            if (cleared > 0) this.score.add(cleared * this.#lineClear);
+            if (cleared > 0) {
+                this.score.add(cleared);
+                for (let i = 0; i < cleared; i++) {
+                    setTimeout(() => this.soundManager.play('clear'), i * 200);
+                }
+            }
 
             this.#spawnNext();
 
