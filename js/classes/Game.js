@@ -5,11 +5,11 @@ import { Status } from './Status.js';
 import { SoundManager } from './SoundManager.js';
 import { TetrominoFactory } from "./TetrominoFactory.js";
 import { InputManager } from './InputManager.js';
+import { LevelManager } from './LevelManager.js';
 
 export class Game
 {
     #tetrominoFactory;
-    #dropInterval;
     #timerId = null;
     #keyActions = [];
 
@@ -34,9 +34,9 @@ export class Game
         this.renderer = new Render(config.render);
         this.status = new Status(config.status);
         this.soundManager = new SoundManager(config.sound);
+        this.levelManager = new LevelManager(config.leveling);
 
         this.#tetrominoFactory = TetrominoFactory;
-        this.#dropInterval = config.speed.initialDropInterval;
 
         this.#keyActions = {
             start: () => this.start(),
@@ -79,7 +79,7 @@ export class Game
 
     #scheduleTick()
     {
-        this.#timerId = setInterval(() => this.tick(), this.#dropInterval);
+        this.#timerId = setInterval(() => this.tick(), this.levelManager.dropInterval);
     }
 
     #clearTimer()
@@ -105,6 +105,7 @@ export class Game
         this.score.reset();
         this.status.reset();
         this.board.reset();
+        this.levelManager.reset();
 
         // Losowanie klocków
         this.current = this.#tetrominoFactory.randomTetromino();
@@ -152,6 +153,7 @@ export class Game
 
     tick()
     {
+        console.log(this.levelManager.level, this.levelManager.dropInterval)
         if (this.gameOver) return;
 
         const moved = this.#tryMove(0, 1);
@@ -160,10 +162,18 @@ export class Game
             this.soundManager.play('drop');
             const cleared = this.board.clearLines();
             this.score.add(cleared);
-            for (let i = cleared; i > 0; i--) {
-                setTimeout(() => this.soundManager.play('clear'), (cleared - i) * 200);
-            }
             this.#spawnNext();
+
+            if (cleared > 0) {
+                for (let i = 0; i < cleared; i++) {
+                    setTimeout(() => this.soundManager.play('clear'), i * 200);
+                }
+
+                if (this.levelManager.update(this.score.lines)) {
+                    this.#clearTimer();
+                    this.#scheduleTick();
+                }
+            }
 
             if (!this.board.isValidPosition(this.current)) {
                 this.#endGame();

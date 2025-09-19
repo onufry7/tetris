@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () =>
         score: document.getElementById("score"),
         lines: document.getElementById("lines"),
         status: document.getElementById("status"),
+        level: document.getElementById("level"),
         sound: document.getElementById("sound")
     };
 

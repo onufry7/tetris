@@ -1,6 +1,6 @@
 export class Config
 {
-    constructor({ grid, miniGrid, score, lines, status, sound })
+    constructor({ grid, miniGrid, score, lines, status, level, sound })
     {
         // Rozmiar planszy
         this.board = { width: 10, height: 20 }
@@ -15,7 +15,13 @@ export class Config
         }
 
         // Prędkość
-        this.speed = { initialDropInterval: 500 }
+        this.leveling = {
+            levelIndicator: level,
+            initialDropInterval: 1050,
+            minDropInterval: 100,
+            decreasePerLevel: 50,
+            linesPerLevel: 50,
+        }
 
         // Rozmiar mini planszy
         this.miniSize = 4;
