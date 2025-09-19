@@ -12,7 +12,7 @@ Prosta gra Tetris napisana w JavaScript, HTML i CSS.
 - Strzałki ← → ↓ lub przyciski ⮜ ⮞ ⮟ na ekranie: ruch klocków
 - Strzałka ↑ lub przycisk ⭮ na ekranie: obrót klocka
 - Enter / ⏻: rozpocznij grę
-- Spacja / ⏸: pauza
+- Spacja / ||: pauza
 - S / ♫: wycisz dźwięki
 
 ## Funkcje
