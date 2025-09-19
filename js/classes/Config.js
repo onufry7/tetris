@@ -5,13 +5,16 @@ export class Config
         // Rozmiar planszy
         this.board = { width: 10, height: 20 }
 
-        // Punktacja i prędkość spadania
+        // Punktacja
         this.scoring = {
             scoreIndicator: score,
             linesIndicator: lines,
+            multiplier: 0.5,
+            bonus: 0.1,
             lineClear: 10
         }
 
+        // Prędkość
         this.speed = { initialDropInterval: 500 }
 
         // Rozmiar mini planszy

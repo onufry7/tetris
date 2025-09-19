@@ -39,19 +39,21 @@ body {
 
 #console-bottom {
     background-color: var(--console-color);
-    padding: 60px 40px;
+    padding: 60px 40px 30px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(238, 237, 237, 0.1);
+    box-shadow: 0 0 10px rgba(238, 237, 237, 0.1)
 }
+
 
 hr.separator {
     width: 90%;
     border: 0;
     height: 2px;
-    background-color: #000;
+    background-color: #B0B0B0;
     margin: 0;
     margin: auto;
 }
+
 
 #screen {
     display: flex;
@@ -246,7 +248,7 @@ main {
 
 #buttons button {
     border-radius: 50%;
-    border: 2px groove gray;
+    border: 4px groove rgb(128, 128, 128);
     background-color: var(--buttons-color);
     cursor: pointer;
     font-weight: bolder;
@@ -254,13 +256,14 @@ main {
 
 #buttons button:active {
     background-color: var(--press-buttons-color);
+    border: 3px solid rgb(100, 100, 100);
 }
 
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 60px auto 0;
+    margin: 90px auto 0;
     font-size: 160px;
     cursor: default;
 }

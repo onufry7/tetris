@@ -159,13 +159,10 @@ export class Game
             this.board.place(this.current);
             this.soundManager.play('drop');
             const cleared = this.board.clearLines();
-            if (cleared > 0) {
-                this.score.add(cleared);
-                for (let i = 0; i < cleared; i++) {
-                    setTimeout(() => this.soundManager.play('clear'), i * 200);
-                }
+            this.score.add(cleared);
+            for (let i = cleared; i > 0; i--) {
+                setTimeout(() => this.soundManager.play('clear'), (cleared - i) * 200);
             }
-
             this.#spawnNext();
 
             if (!this.board.isValidPosition(this.current)) {
