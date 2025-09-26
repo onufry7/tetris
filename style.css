@@ -8,9 +8,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #000;
-    font-size: 16px;
+    font-size: clamp(14px, 3vw, 16px);
     margin: 0;
-    padding: 40px 20px;
+    padding: clamp(4px, 5vw, 40px) clamp(2px, 5vw, 20px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,10 +21,12 @@ body {
     flex-direction: column;
     align-items: stretch;
     border-radius: 20px;
+    width: 98vw;
+    max-width: 450px;
 }
 
 #console-top {
-    padding: 60px;
+    padding: clamp(30px, 5vw, 60px);
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(238, 237, 237, 0.1);
     display: flex;
@@ -32,14 +34,14 @@ body {
     justify-content: space-between;
     background-color: var(--console-color);
     background-image: url("img/bg.webp"), url("img/bg.webp");
-    background-position: left center, right center;
     background-repeat: no-repeat, no-repeat;
-    background-size: 60px auto;
+    background-position: left center, right center;
+    background-size: clamp(30px, 5vw, 60px) auto;
 }
 
 #console-bottom {
     background-color: var(--console-color);
-    padding: 60px 40px 30px;
+    padding: clamp(30px, 5vw, 60px) clamp(20px, 5vw, 40px) clamp(15px, 4vw, 30px);
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(238, 237, 237, 0.1)
 }
@@ -60,7 +62,7 @@ hr.separator {
     flex-direction: column;
     align-items: center;
     background-color: var(--screen-color);
-    border: 10px inset var(--console-color);
+    border: clamp(5px, 2vw, 10px) inset var(--console-color);
 }
 
 header {
@@ -72,10 +74,11 @@ header {
 h3 {
     margin: 0;
     padding: 0 10px;
-    font-size: 16px;
+    font-size: clamp(12px, 3vw, 16px);
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1.5em;
 }
@@ -98,7 +101,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 1em;
+    gap: clamp(0.5em, 2vw, 1em);
 }
 
 #status {
@@ -134,8 +137,9 @@ main {
 
 /* Plansza główna */
 #grid {
-    width: 200px;
-    height: 400px;
+    width: 45vw;
+    max-width: 200px;
+    aspect-ratio: 1/2;
     border-top: #000 2px solid;
     border-right: #000 2px solid;
     display: grid;
@@ -156,11 +160,12 @@ main {
 
 /* Mini-grid (następna figura) */
 #mini-grid {
-    width: 80px;
-    height: 80px;
+    width: 20vw;
+    max-width: 80px;
+    aspect-ratio: 1/1;
     display: grid;
-    grid-template-columns: repeat(4, 20px);
-    grid-template-rows: repeat(4, 20px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 0;
     margin: 20px 10px;
 }
@@ -217,33 +222,33 @@ main {
 
 .controls {
     grid-area: controls;
-    margin-top: 4em;
+    margin-top: clamp(3em, 5vw, 4em);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2em;
+    gap: clamp(1em, 5vw, 2em);
 }
 
 #left-button,
 #right-button,
 #down-button {
-    width: 60px;
-    height: 60px;
-    font-size: 18px;
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(40px, 10vw, 60px);
+    font-size: clamp(14px, 3vw, 18px);
 }
 
 #rotate-button {
-    width: 100px;
-    height: 100px;
-    font-size: 24px;
+    width: clamp(60px, 15vw, 100px);
+    height: clamp(60px, 15vw, 100px);
+    font-size: clamp(18px, 5vw, 24px);
 }
 
 #start-button,
 #sound-button,
 #pause-button {
-    width: 50px;
-    height: 50px;
-    font-size: 16px;
+    width: clamp(40px, 8vw, 50px);
+    height: clamp(40px, 8vw, 50px);
+    font-size: clamp(12px, 2.5vw, 16px);
 }
 
 #buttons button {
@@ -263,13 +268,15 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 90px auto 0;
-    font-size: 160px;
+    margin: clamp(10px, 15vw, 70px) auto 0;
+    font-size: clamp(80px, 20vw, 160px);
     cursor: default;
 }
 
 .logo>img {
     max-width: 350px;
+    width: 100%;
+    height: auto;
 }
 
 @keyframes blink {
