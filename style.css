@@ -1,8 +1,8 @@
 :root {
     --console-color: lightgray;
-    --screen-color: rgb(145, 142, 142);
-    --buttons-color: rgb(0, 140, 255);
-    --press-buttons-color: rgb(0, 130, 255);
+    --screen-color: #918e8e;
+    --buttons-color: #008cff;
+    --press-buttons-color: #0082ff;
 }
 
 body {
@@ -31,7 +31,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     background-color: var(--console-color);
-    background-image: url("img/bg.png"), url("img/bg.png");
+    background-image: url("img/bg.webp"), url("img/bg.webp");
     background-position: left center, right center;
     background-repeat: no-repeat, no-repeat;
     background-size: 60px auto;
@@ -268,6 +268,9 @@ main {
     cursor: default;
 }
 
+.logo>img {
+    max-width: 350px;
+}
 
 @keyframes blink {
 

@@ -9,13 +9,13 @@ export class TetrominoFactory
                 [[0, 0], [1, 0], [2, 0], [3, 0]], // poziomo
                 [[1, 0], [1, 1], [1, 2], [1, 3]]  // pionowo
             ],
-            color: 'cyan'
+            color: '#1A6D75'
         },
         O: {
             rotations: [
                 [[1, 0], [2, 0], [1, 1], [2, 1]] // kwadrat nie rotuje
             ],
-            color: 'yellow'
+            color: '#00886e'
         },
         T: {
             rotations: [
@@ -24,21 +24,21 @@ export class TetrominoFactory
                 [[0, 1], [1, 1], [2, 1], [1, 2]], // dół
                 [[0, 1], [1, 0], [1, 1], [1, 2]]  // lewa
             ],
-            color: 'purple'
+            color: '#542D7D'
         },
         S: {
             rotations: [
                 [[1, 0], [2, 0], [0, 1], [1, 1]], // poziomo
                 [[1, 0], [1, 1], [2, 1], [2, 2]]  // pionowo
             ],
-            color: 'green'
+            color: '#2E6B2E'
         },
         Z: {
             rotations: [
                 [[0, 0], [1, 0], [1, 1], [2, 1]], // poziomo
                 [[2, 0], [1, 1], [2, 1], [1, 2]]  // pionowo
             ],
-            color: 'red'
+            color: '#8B1A1A'
         },
         J: {
             rotations: [
@@ -47,7 +47,7 @@ export class TetrominoFactory
                 [[0, 1], [1, 1], [2, 1], [2, 2]], // dół
                 [[1, 0], [1, 1], [0, 2], [1, 2]]  // lewa
             ],
-            color: 'blue'
+            color: '#1E3F73'
         },
         L: {
             rotations: [
@@ -56,7 +56,7 @@ export class TetrominoFactory
                 [[0, 1], [1, 1], [2, 1], [0, 2]], // dół
                 [[0, 0], [1, 0], [1, 1], [1, 2]]  // lewa
             ],
-            color: 'orange'
+            color: '#862872'
         }
     }
 
