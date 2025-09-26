@@ -22,6 +22,7 @@ body {
     align-items: stretch;
     border-radius: 20px;
     width: 98vw;
+    min-width: 270px;
     max-width: 450px;
 }
 
@@ -61,8 +62,10 @@ hr.separator {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: var(--screen-color);
     border: clamp(5px, 2vw, 10px) inset var(--console-color);
+    margin: auto;
 }
 
 header {
@@ -232,23 +235,24 @@ main {
 #left-button,
 #right-button,
 #down-button {
-    width: clamp(40px, 10vw, 60px);
-    height: clamp(40px, 10vw, 60px);
-    font-size: clamp(14px, 3vw, 18px);
+    width: clamp(40px, 12vw, 60px);
+    height: clamp(40px, 12vw, 60px);
+    font-size: clamp(14px, 4vw, 18px);
+
 }
 
 #rotate-button {
-    width: clamp(60px, 15vw, 100px);
-    height: clamp(60px, 15vw, 100px);
-    font-size: clamp(18px, 5vw, 24px);
+    width: clamp(60px, 18vw, 100px);
+    height: clamp(60px, 18vw, 100px);
+    font-size: clamp(18px, 6vw, 24px);
 }
 
 #start-button,
 #sound-button,
 #pause-button {
-    width: clamp(40px, 8vw, 50px);
-    height: clamp(40px, 8vw, 50px);
-    font-size: clamp(12px, 2.5vw, 16px);
+    width: clamp(40px, 10vw, 50px);
+    height: clamp(40px, 10vw, 50px);
+    font-size: clamp(12px, 3vw, 16px);
 }
 
 #buttons button {
@@ -257,6 +261,12 @@ main {
     background-color: var(--buttons-color);
     cursor: pointer;
     font-weight: bolder;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s, border 0.1s;
+}
+
+#buttons button:focus {
+    outline: none;
 }
 
 #buttons button:active {
