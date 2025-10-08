@@ -7,6 +7,10 @@
     <meta name="author" content="Twoje Imię i Nazwisko">
     <meta name="keywords" content="tetris, gra, JavaScript, HTML, CSS, klocki, plansza, dźwięki">
     <meta name="description" content="Prosta gra Tetris w JavaScript.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script TYPE="module" src="js/main.js" charset="utf-8"></script>
     <title>Tetris</title>
@@ -42,21 +46,49 @@
         <div id="console-bottom">
             <div id="buttons">
                 <div class="leftArrow">
-                    <button id="left-button">⮜</button>
+                    <button id="left-button">
+                        <span class="material-symbols-outlined">
+                            arrow_left
+                        </span>
+                    </button>
                 </div>
                 <div class="rightArrow">
-                    <button id="right-button">⮞</button>
+                    <button id="right-button">
+                        <span class="material-symbols-outlined">
+                            arrow_right
+                        </span>
+                    </button>
                 </div>
                 <div class="rotate">
-                    <button id="rotate-button">⭮</button>
+                    <button id="rotate-button">
+                        <span class="material-symbols-outlined">
+                            cached
+                        </span>
+                    </button>
                 </div>
                 <div class="bottomArrow">
-                    <button id="down-button">⮟</button>
+                    <button id="down-button">
+                        <span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span>
+                    </button>
                 </div>
                 <div class="controls">
-                    <button id="start-button">⏻</button>
-                    <button id="sound-button">♫</button>
-                    <button id="pause-button">||</button>
+                    <button id="start-button">
+                        <span class="material-symbols-outlined">
+                            power_settings_new
+                        </span>
+                    </button>
+                    <button id="sound-button">
+                        <span class="material-symbols-outlined">
+                            music_note
+                        </span>
+                    </button>
+                    <button id="pause-button">
+                        <span class="material-symbols-outlined">
+                            pause
+                        </span>
+                    </button>
                 </div>
             </div>
             <div class="logo">

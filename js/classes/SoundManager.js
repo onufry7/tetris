@@ -22,7 +22,9 @@ export class SoundManager
     #updateIndicator()
     {
         if (!this.indicator) return;
-        this.indicator.textContent = this.muted ? '🔇' : '🎵';
+        this.indicator.innerHTML = this.muted
+            ? '<span class="material-symbols-outlined">music_off</span>'
+            : '<span class="material-symbols-outlined">music_note</span>';
     }
 
     // To use in future
